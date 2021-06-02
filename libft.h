@@ -6,7 +6,7 @@
 /*   By: ahocine <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 17:08:08 by ahocine           #+#    #+#             */
-/*   Updated: 2021/05/20 17:29:46 by ahocine          ###   ########.fr       */
+/*   Updated: 2021/06/02 11:22:49 by ahocine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		ft_strlcpy(char *dest, char *src, int n);
 int		ft_atoi(const char *nb);
 //void	*ft_calloc(size_t number, size_t len);
 char	*ft_strdup(const char *str);
-char	*ft_substr(char const *s, unsigned int start,size_t len);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(const char *str, char charset);
