@@ -17,8 +17,6 @@ static int	ft_counter(int n)
 	int	len;
 
 	len = 1;
-	if (n < 0)
-		len++;
 	while (n < -9 || n > 9)
 	{
 		n /= 10;
@@ -46,19 +44,20 @@ char	*ft_itoa(int n)
 
 	len = ft_counter(n);
 	div = ft_recursive_power(10, len - 1);
+	index = 0;
+	if (n < 0 && index++)
+		len++;
 	res = malloc(sizeof(char) * (len + 1));
 	if (!(res))
 		return (NULL);
-	index = 0;
 	if (n < 0)
 	{
-		index++;
 		res[0] = '-';
+		n = -n;
 	}
-	while (div != 0)
+	while (index < len)
 	{
-		res[index] = (n / div) + '0';
-		printf("n:%d\ndiv:%d\nres:%c\n", n, div, res[index]);
+		res[index++] = (n / div) + '0';
 		n %= div;
 		div /= 10;
 	}
@@ -66,11 +65,11 @@ char	*ft_itoa(int n)
 	return (res);
 }
 
-int		main(void)
+int	main(void)
 {
-	char *res;
+	char	*res;
 
-	res = ft_itoa(-3163513);
+	res = ft_itoa(-2147483648);
 	printf("%s\n", res);
 	return (0);
 }
