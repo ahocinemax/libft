@@ -10,4 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
+char	*ft_strchr(const char *s, int c)
+{
+	size_t	i;
+
+	if (!(s))
+		return (NULL);
+	while (s[i] && s[i] != (char)c)
+		i++;
+	if ((char)c == s[i])
+		return ((char *)&s[i]);
+	return (NULL);
+}
