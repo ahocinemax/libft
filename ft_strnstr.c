@@ -14,5 +14,5 @@
 
 char	*ft_strnstr(const char *big, const char	*little)
 {
-	
+
 }
