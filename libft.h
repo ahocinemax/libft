@@ -6,7 +6,7 @@
 /*   By: ahocine <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 17:08:08 by ahocine           #+#    #+#             */
-/*   Updated: 2021/06/04 14:21:44 by ahocine          ###   ########.fr       */
+/*   Updated: 2021/06/04 14:32:44 by ahocine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
-# include <string.h>
+# include <bsd/string.h>
 
-int     strlcat(char *dst, const char *src, size_t dstsize);
 void	*ft_memset(void *dest, int c, size_t len);
 void	ft_bzero(void *b, size_t len);
 void	*ft_memcpy(void *dest, const void *src, size_t len);
