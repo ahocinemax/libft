@@ -48,8 +48,6 @@ char	*ft_itoa(int n)
 	if (n < 0 && index++)
 		len++;
 	res = malloc(sizeof(char) * (len + 1));
-	if (!(res))
-		return (NULL);
 	if (n < 0)
 	{
 		res[0] = '-';
