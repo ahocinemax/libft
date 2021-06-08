@@ -15,11 +15,9 @@
 int	ft_strlcpy(char *dst, char *src, int n)
 {
 	int	i;
-	int	j;
 	int	len;
 
 	i = 0;
-	j = 0;
 	len = ft_strlen(src);
 	if (len == 0 || !(dst))
 		return (len);

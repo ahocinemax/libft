@@ -14,7 +14,6 @@
 
 void	*ft_calloc(size_t number, size_t len)
 {
-	size_t	index;
 	void	*res;
 
 	res = malloc(number * len);
