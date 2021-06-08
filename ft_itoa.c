@@ -48,6 +48,8 @@ char	*ft_itoa(int n)
 	if (n < 0)
 		len++;
 	res = malloc(sizeof(char) * (len + 1));
+	if (res)
+		return (NULL);
 	if (n < 0)
 	{
 		res[index++] = '-';
@@ -68,7 +70,7 @@ int	main(void)
 	char	*res;
 
 	res = NULL;
-	res = ft_itoa(93258);
+	res = ft_itoa(-938493258);
 	printf("%s\n", res);
 	return (0);
 }
