@@ -45,12 +45,12 @@ char	*ft_itoa(int n)
 	len = ft_counter(n);
 	div = ft_recursive_power(10, len - 1);
 	index = 0;
-	if (n < 0 && index++)
+	if (n < 0)
 		len++;
 	res = malloc(sizeof(char) * (len + 1));
 	if (n < 0)
 	{
-		res[0] = '-';
+		res[index++] = '-';
 		n = -n;
 	}
 	while (index < len)
@@ -59,7 +59,7 @@ char	*ft_itoa(int n)
 		n %= div;
 		div /= 10;
 	}
-	res[len] = 0;
+	res[index] = 0;
 	return (res);
 }
 
@@ -67,7 +67,8 @@ int	main(void)
 {
 	char	*res;
 
-	res = ft_itoa(-2147483648);
+	res = NULL;
+	res = ft_itoa(93258);
 	printf("%s\n", res);
 	return (0);
 }
