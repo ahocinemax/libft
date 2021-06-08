@@ -12,8 +12,6 @@
 
 #include "libft.h"
 
-int	ft_strlen(const char *str);
-
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
