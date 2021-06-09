@@ -62,13 +62,3 @@ char	*ft_itoa(int n)
 	res[index] = 0;
 	return (res);
 }
-
-int	main(void)
-{
-	char	*res;
-
-	res = NULL;
-	res = ft_itoa(-938493258);
-	printf("%s\n", res);
-	return (0);
-}
