@@ -17,10 +17,11 @@ void	*ft_memchr(const void *b, int c, size_t len)
 	size_t	i;
 
 	i = 0;
-	while (i++ < len)
+	while (i < len)
 	{
 		if (((unsigned int *)b)[i] == (unsigned int)c)
 			return ((void *)b + i);
+		i++;
 	}
 	return (NULL);
 }
