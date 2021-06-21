@@ -14,11 +14,13 @@
 
 void	*ft_memccpy(void *dest, const void *src, int c, size_t len)
 {
-	void	*res;
+	size_t	i;
 
-	res = ft_memchr(src, c, len);
-	if (res != NULL)
-		return (ft_memcpy(dest, src, res - src + 1));
-	ft_memcpy(dest, src, len);
-	return (NULL);
-}	
+	i = 0;
+	if (len < 1 || !(ft_memchr(src, c, len)))
+		return (NULL);
+	while (*(unsigned char *)(src + i) != (unsigned char)c && i < len)
+		i++;
+	ft_memcpy(dest, src, i);
+	return ((void *)(dest + i + 1));
+}
