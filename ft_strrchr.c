@@ -22,7 +22,7 @@ char	*ft_strrchr(const char *s, int c)
 	if (s[i] == (char)c)
 		return ((char *)&s[i]);
 	i--;
-	while (s[i] != (char)c && s[i])
+	while (s[i] != (char)c && i > 0)
 		i--;
 	if (s[i] == (char)c)
 		return ((char *)&s[i]);
