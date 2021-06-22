@@ -21,6 +21,7 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t len)
 		return (NULL);
 	while (*(unsigned char *)(src + i) != (unsigned char)c && i < len)
 		i++;
-	ft_memcpy(dest, src, i);
+	write(1, &i, 1);
+	ft_memcpy(dest, src, i + 1);
 	return ((void *)(dest + i + 1));
 }

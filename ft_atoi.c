@@ -25,6 +25,8 @@ int	ft_atoi(const char *nb)
 		neg = -1;
 		i++;
 	}
+	while (nb[i] && !ft_isdigit(nb[i]))
+		i++;
 	while (nb[i] && ft_isdigit(nb[i]))
 		res *= 10 + nb[i++] - '0';
 	return ((int)res * neg);
