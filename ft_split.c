@@ -61,7 +61,7 @@ char	**ft_split(const char *str, char sep)
 	arr = (char **)malloc(sizeof(char *) * (size_to_malloc + 1));
 	index = 0;
 	i = 0;
-	while (index < size_to_malloc && i < ft_strlen(str) && str[i])
+	while (index < size_to_malloc && i < ft_strlen(str))
 	{
 		s_line = 0;
 		while ((str[i + s_line] != sep) && str[s_line + i])
