@@ -61,17 +61,17 @@ char	**ft_split(const char *str, char sep)
 	arr = (char **)malloc(sizeof(char *) * (size_to_malloc + 1));
 	index = 0;
 	i = 0;
-	while (index < size_to_malloc && i < ft_strlen(str))
+	while (index < size_to_malloc && i < ft_strlen(str) - 1)
 	{
 		s_line = 0;
 		while (((char)str[i + s_line] != sep) && (char)str[s_line + i])
 			s_line++;
 		if (s_line > 0)
 		{
-			arr[index++] = ft_malloc_word(s_line, &str[i]);
-			i += s_line + 1;
+			arr[index++] = ft_malloc_word(s_line, (char *)&str[i]);
+			i += s_line;
 		}
-		while ((char)str[i + 1] && (char)str[i] == sep)
+		while ((char)str[i] && (char)str[i] == sep)
 			i++;
 	}
 	arr[index] = 0;
