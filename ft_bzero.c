@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahocine <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ahocine <ahocine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 20:49:59 by ahocine           #+#    #+#             */
 /*   Updated: 2021/05/30 20:50:03 by ahocine          ###   ########.fr       */

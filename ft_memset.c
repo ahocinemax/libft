@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahocine <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ahocine <ahocine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 20:57:13 by ahocine           #+#    #+#             */
 /*   Updated: 2021/05/30 20:57:28 by ahocine          ###   ########.fr       */
