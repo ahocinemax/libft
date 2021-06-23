@@ -38,6 +38,8 @@ static char	*ft_malloc_word(int size_line, const char *word_to_malloc)
 
 	i = 0;
 	dest = malloc(size_line + 1);
+	if (!dest)
+		return (NULL);
 	while (word_to_malloc[i] && i < size_line)
 	{
 		dest[i] = word_to_malloc[i];
@@ -59,7 +61,7 @@ char	**ft_split(const char *str, char sep)
 	arr = (char **)malloc(sizeof(char *) * (size_to_malloc + 1));
 	index = 0;
 	i = 0;
-	while (index < size_to_malloc && i < ft_strlen(str))
+	while (index < size_to_malloc && i < ft_strlen(str) && str[i])
 	{
 		s_line = 0;
 		while ((str[i + s_line] != sep) && str[s_line + i])
@@ -69,23 +71,17 @@ char	**ft_split(const char *str, char sep)
 			arr[index++] = ft_malloc_word(s_line, &str[i]);
 			i += s_line + 1;
 		}
-		while (str[i] == sep && str[i])
+		while (str[i + 1] && str[i] == sep)
 			i++;
 	}
 	arr[index] = 0;
 	return (arr);
 }
-/*
-int		main(void)
+
+int        main(void)
 {
-	int i = 0;
-	char **tab;
-		
-	tab = ft_split("bonjour je m'appel Arthur", ' ');
-	while (i < 4)
-	{
-		printf("string %d : %s\n", i, tab[i]);
-		i++;
-	}
-	return (0);
-}*/
+    char **tab;
+        
+    tab = ft_split("bonjour je m'appel Arthur", ' ');
+    return (0);
+}

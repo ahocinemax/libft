@@ -34,33 +34,21 @@ char	*ft_itoa(int n)
 	long	nbr;
 
 	index = ft_counter(n);
-	printf("%zu cases necessaires\n", index);
 	nbr = n;
 	if (nbr < 0)
 		nbr = -nbr;
 	res = malloc(sizeof(char) * (index + 1));
 	if (!res)
 		return (NULL);
-	printf("Malloc pass. nbr = %ld\nindex = %lu\n", nbr, index);
-	res[index] = 0;
+	res[index--] = 0;
 	while (index > 0)
 	{
-		res[index] = (nbr % 10) + '0';
-		printf("reste = %ld. current = %c\n", nbr, res[index]);
+		res[index--] = (nbr % 10) + '0';
 		nbr /= 10;
-		index--;
 	}
 	if (n < 0)
 		res[0] = '-';
+	else
+		res[0] = nbr + '0';
 	return (res);
-}
-
-int		main(int ac, char **av)
-{
-	if (ac == 2)
-	{
-		int	n = ft_atoi(av[1]);
-		printf("\nnb = %d & res = %s\n", n, ft_itoa(n));
-	}
-	return (0);
 }
