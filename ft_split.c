@@ -64,25 +64,16 @@ char	**ft_split(const char *str, char sep)
 	while (index < size_to_malloc && i < ft_strlen(str))
 	{
 		s_line = 0;
-		while ((str[i + s_line] != sep) && str[s_line + i])
+		while (((char)str[i + s_line] != sep) && (char)str[s_line + i])
 			s_line++;
 		if (s_line > 0)
 		{
 			arr[index++] = ft_malloc_word(s_line, &str[i]);
 			i += s_line + 1;
 		}
-		while (str[i + 1] && str[i] == sep)
+		while ((char)str[i + 1] && (char)str[i] == sep)
 			i++;
 	}
 	arr[index] = 0;
 	return (arr);
 }
-
-/*
-int        main(void)
-{
-    char **tab;
-        
-    tab = ft_split("bonjour je m'appel Arthur", ' ');
-    return (0);
-}*/

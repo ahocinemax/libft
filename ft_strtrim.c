@@ -12,30 +12,29 @@
 
 #include "libft.h"
 
-static int	ft_is_charset(char c, const char *charset)
+static int	ft_is_charset(char c, const char *sep)
 {
-	int	j;
+	size_t	j;
 
-	j = 0;
-	while (charset[j])
-	{
-		if (c == charset[j])
+	j = -1;
+	while (sep[++j])
+		if (c == sep[j])
 			return (1);
-		j++;
-	}
 	return (0);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *sep)
 {
 	size_t	start;
 	size_t	len;
+	char	*str;
 
+	str = (char *)s1;
 	start = 0;
-	while (s1[start] && ft_is_charset(s1[start], set))
+	while (str[start] && ft_is_charset(str[start], sep))
 		start++;
-	len = ft_strlen(s1);
-	while (start < len && s1[len - 1] && ft_is_charset(s1[len - 1], set))
+	len = ft_strlen(str);
+	while (start < len && str[len - 1] && ft_is_charset(str[len - 1], sep))
 		len--;
-	return (ft_substr(s1, start, len));
+	return (ft_substr(s1, start, len - start));
 }

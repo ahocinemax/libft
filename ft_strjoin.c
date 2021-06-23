@@ -14,14 +14,11 @@
 
 static char	*ft_strcpy(char *dest, const char *src)
 {
-	int	i;
+	size_t	i;
 
-	i = 0;
-	while (src[i])
-	{
+	i = -1;
+	while (src[++i])
 		dest[i] = src[i];
-		i++;
-	}
 	dest[i] = '\0';
 	return (dest);
 }
@@ -34,13 +31,11 @@ char	*ft_strjoin(const char *s1, const char *s2)
 
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
-	if (len1 == 0 || len2 == 0)
-		return (NULL);
-	res = malloc(sizeof(len1 + len2 + 1));
-	if (!(res))
+	res = malloc(len1 + len2 + 1);
+	if (!res)
 		return (NULL);
 	ft_strcpy((char *)res, s1);
-	ft_strcpy((char *)(res + len1), s2);
+	ft_strcpy((char *)&res[len1], s2);
 	res[len1 + len2] = '\0';
 	return (res);
 }
