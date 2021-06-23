@@ -78,10 +78,11 @@ char	**ft_split(const char *str, char sep)
 	return (arr);
 }
 
+/*
 int        main(void)
 {
     char **tab;
         
     tab = ft_split("bonjour je m'appel Arthur", ' ');
     return (0);
-}
+}*/
