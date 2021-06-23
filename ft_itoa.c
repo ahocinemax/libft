@@ -17,6 +17,8 @@ static int	ft_counter(int n)
 	int	len;
 
 	len = 1;
+	if (n < 0)
+		len++;
 	while (n < -9 || n > 9)
 	{
 		n /= 10;
@@ -25,40 +27,40 @@ static int	ft_counter(int n)
 	return (len);
 }
 
-static int	ft_recursive_power(int nb, int power)
-{
-	if (power < 0)
-		return (0);
-	else if (power == 0)
-		return (1);
-	else
-		return (nb * ft_recursive_power(nb, power - 1));
-}
-
 char	*ft_itoa(int n)
 {
 	char	*res;
-	int		len;
-	int		div;
-	int		index;
+	size_t	index;
+	long	nbr;
 
-	len = ft_counter(n);
-	div = ft_recursive_power(10, len - 1);
-	index = 0;
-	if (n < 0)
-		len++;
-	res = malloc(sizeof(char) * (len + 1));
-	if (n < 0)
-	{
-		res[index++] = '-';
-		n = -n;
-	}
-	while (index < len)
-	{
-		res[index++] = (n / div) + '0';
-		n %= div;
-		div /= 10;
-	}
+	index = ft_counter(n);
+	printf("%zu cases necessaires\n", index);
+	nbr = n;
+	if (nbr < 0)
+		nbr = -nbr;
+	res = malloc(sizeof(char) * (index + 1));
+	if (!res)
+		return (NULL);
+	printf("Malloc pass. nbr = %ld\nindex = %lu\n", nbr, index);
 	res[index] = 0;
+	while (index > 0)
+	{
+		res[index] = (nbr % 10) + '0';
+		printf("reste = %ld. current = %c\n", nbr, res[index]);
+		nbr /= 10;
+		index--;
+	}
+	if (n < 0)
+		res[0] = '-';
 	return (res);
+}
+
+int		main(int ac, char **av)
+{
+	if (ac == 2)
+	{
+		int	n = ft_atoi(av[1]);
+		printf("\nnb = %d & res = %s\n", n, ft_itoa(n));
+	}
+	return (0);
 }

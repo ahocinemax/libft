@@ -12,12 +12,7 @@
 
 #include "libft.h"
 
-static int	ft_is_charset(char c, char charset)
-{
-	return (c == charset);
-}
-
-static int	ft_cntline(const char *str, char charset)
+static int	ft_cntline(const char *str, char sep)
 {
 	int	i;
 	int	count;
@@ -26,11 +21,11 @@ static int	ft_cntline(const char *str, char charset)
 	count = 0;
 	while (str[i])
 	{
-		while (str[i] && str[i] == charset)
+		while (str[i] && str[i] == sep)
 			i++;
-		if (str[i] && str[i] != charset)
+		if (str[i] && str[i] != sep)
 			count++;
-		while (str[i] && str[i] != charset)
+		while (str[i] && str[i] != sep)
 			i++;
 	}
 	return (count);
@@ -52,7 +47,7 @@ static char	*ft_malloc_word(int size_line, const char *word_to_malloc)
 	return (dest);
 }
 
-char	**ft_split(const char *str, char charset)
+char	**ft_split(const char *str, char sep)
 {
 	char	**arr;
 	int		index;
@@ -60,23 +55,37 @@ char	**ft_split(const char *str, char charset)
 	int		s_line;
 	int		size_to_malloc;
 
-	size_to_malloc = ft_cntline(str, charset);
+	size_to_malloc = ft_cntline(str, sep);
 	arr = (char **)malloc(sizeof(char *) * (size_to_malloc + 1));
 	index = 0;
 	i = 0;
 	while (index < size_to_malloc && i < ft_strlen(str))
 	{
 		s_line = 0;
-		while ((str[i + s_line] != charset) && str[s_line + i])
+		while ((str[i + s_line] != sep) && str[s_line + i])
 			s_line++;
 		if (s_line > 0)
 		{
 			arr[index++] = ft_malloc_word(s_line, &str[i]);
 			i += s_line + 1;
 		}
-		while (ft_is_charset(str[i], charset) && str[i])
+		while (str[i] == sep && str[i])
 			i++;
 	}
 	arr[index] = 0;
 	return (arr);
 }
+/*
+int		main(void)
+{
+	int i = 0;
+	char **tab;
+		
+	tab = ft_split("bonjour je m'appel Arthur", ' ');
+	while (i < 4)
+	{
+		printf("string %d : %s\n", i, tab[i]);
+		i++;
+	}
+	return (0);
+}*/
