@@ -10,4 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
+void	ft_lstadd_back(t_list **alst, t_list *new)
+{
+	t_list	*element;
+
+	if (alst)
+	{
+		if (*alst)
+		{
+			element = ft_lstlast(alst);
+			element->next = new;
+		}
+		else
+			alst = new;
+	}
+}
