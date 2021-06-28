@@ -29,6 +29,8 @@ char	*ft_strtrim(char const *s1, char const *sep)
 	size_t	len;
 	char	*str;
 
+	if (!s1 || !sep)
+		return (NULL);
 	str = (char *)s1;
 	start = 0;
 	while (str[start] && ft_is_charset(str[start], sep))
