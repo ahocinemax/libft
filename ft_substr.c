@@ -36,13 +36,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	res[i] = 0;
 	return (res);
 }
-
-int    main(void)
-{
-    char    *str = strdup("1");
-    char    *ret_user;
-
-    ret_user = ft_substr(str, 42, 42000);
-    printf("%d\n", *ret_user);
-    return (0);
-}
