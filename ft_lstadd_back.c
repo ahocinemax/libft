@@ -20,10 +20,10 @@ void	ft_lstadd_back(t_list **alst, t_list *new)
 	{
 		if (*alst)
 		{
-			element = ft_lstlast(alst);
+			element = ft_lstlast(*alst);
 			element->next = new;
 		}
 		else
-			alst = new;
+			*alst = new;
 	}
 }

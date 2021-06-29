@@ -23,17 +23,3 @@ void	*ft_memmove(void *dest, const void *src, size_t len)
 			((unsigned char *)dest)[len] = ((unsigned char *)src)[len];
 	return (dest);
 }
-/*
-int		main(void)
-{
-	char	*dst = NULL;
-	char	*src = NULL;
-	char	*ret_test;
-	char	*ret_user;
-
-	ret_test = memmove(dst, src, 5);
-	ret_user = ft_memmove(dst, src, 5);
-	printf("ret_test = %s\nret_user = %s.\n", ret_test, ret_user);
-	return (0);
-}
-*/
