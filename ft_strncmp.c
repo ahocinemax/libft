@@ -31,7 +31,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 			return (b1[i] - b2[i]);
 		i++;
 	}
-	if (!b1[i] || !b2[i])
+	if ((!b1[i] || !b2[i]) && i != n)
 		return ((b1[i] - b2[i]));
 	return (0);
 }
