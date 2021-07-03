@@ -37,6 +37,15 @@ static void	ft_init(int *a, int *b)
 	*b = 0;
 }
 
+static int	ft_malloc_arr(char ***arr, const char **str, char *sep, int *index)
+{
+	*index = 0;
+	*arr = (char **)malloc(sizeof(char *) * (ft_cntline(*str, *sep) + 1));
+	if (!*arr)
+		return (0);
+	return (1);
+}
+
 static char	*ft_malloc_word(int size_line, const char *word_to_malloc)
 {
 	char	*dest;
@@ -63,8 +72,7 @@ char	**ft_split(const char *str, char sep)
 	int		s_line;
 
 	ft_init(&index, &i);
-	arr = (char **)malloc(sizeof(char *) * (ft_cntline(str, sep) + 1));
-	if (!arr)
+	if (!ft_malloc_arr(&arr, &str, &sep, &index))
 		return (NULL);
 	while (index < ft_cntline(str, sep) && i < ft_strlen(str) - 1)
 	{
@@ -79,6 +87,8 @@ char	**ft_split(const char *str, char sep)
 		while ((char)str[i] && (char)str[i] == sep)
 			i++;
 	}
+	if (str[i] && index < ft_cntline(str, sep))
+		arr[index++] = ft_malloc_word(ft_strlen(str) - i, (char *)&str[i]);
 	arr[index] = 0;
 	return (arr);
 }
