@@ -6,7 +6,7 @@
 /*   By: ahocine <ahocine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 17:08:08 by ahocine           #+#    #+#             */
-/*   Updated: 2021/05/22 17:29:46 by ahocine          ###   ########.fr       */
+/*   Updated: 2022/03/19 10:11:08 by ahocine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,35 +31,40 @@ static int	ft_cntline(const char *str, char sep)
 	return (count);
 }
 
-static void	ft_init(int *a, int *b)
+static int	ft_init(int *a, int *b)
 {
 	*a = 0;
 	*b = 0;
+	return (0);
 }
 
-static int	ft_malloc_arr(char ***arr, const char **str, char *sep, int *index)
+static int	ft_malloc_arr(char ***arr, const char *str, char sep)
 {
-	*index = 0;
-	*arr = (char **)malloc(sizeof(char *) * (ft_cntline(*str, *sep) + 1));
-	if (!*arr)
+	int	len;
+
+	len = ft_cntline(str, sep);
+	if (len > 0)
+		*arr = (char **)malloc(sizeof(char *) * (len + 1));
+	if (!(*arr))
 		return (0);
 	return (1);
 }
 
-static char	*ft_malloc_word(int size_line, const char *word_to_malloc)
+static char	*ft_malloc_word(int size_line, const char *wrd_malloc, int *s_line)
 {
 	char	*dest;
 	int		i;
 
 	i = 0;
-	dest = malloc(size_line + 1);
+	dest = (char *)malloc(size_line + 1);
 	if (!dest)
 		return (NULL);
-	while (word_to_malloc[i] && i < size_line)
+	while (wrd_malloc[i] && i < size_line)
 	{
-		dest[i] = word_to_malloc[i];
+		dest[i] = wrd_malloc[i];
 		i++;
 	}
+	*s_line += i;
 	dest[i] = 0;
 	return (dest);
 }
@@ -71,24 +76,24 @@ char	**ft_split(const char *str, char sep)
 	int		i;
 	int		s_line;
 
-	ft_init(&index, &i);
-	if (!ft_malloc_arr(&arr, &str, &sep, &index))
+	if (ft_init(&index, &i) || !ft_malloc_arr(&arr, str, sep))
 		return (NULL);
 	while (index < ft_cntline(str, sep) && i < ft_strlen(str) - 1)
 	{
 		s_line = 0;
-		while (((char)str[i + s_line] != sep) && (char)str[s_line + i])
+		while ((char)str[s_line + i] && ((char)str[i + s_line] != sep))
 			s_line++;
 		if (s_line > 0)
 		{
-			arr[index++] = ft_malloc_word(s_line, (char *)&str[i]);
-			i += s_line;
+			arr[index++] = ft_malloc_word(s_line, (char *)&str[i], &i);
+			if (!arr[index - 1])
+				free(arr);
 		}
 		while ((char)str[i] && (char)str[i] == sep)
 			i++;
 	}
 	if (str[i] && index < ft_cntline(str, sep))
-		arr[index++] = ft_malloc_word(ft_strlen(str) - i, (char *)&str[i]);
+		arr[index++] = ft_malloc_word(ft_strlen(str) - i, (char *)&str[i], &i);
 	arr[index] = 0;
 	return (arr);
 }
